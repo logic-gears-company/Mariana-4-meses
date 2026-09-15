@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1d13">
+  <meta name="description" content="Una carta digital para Mariana. Cuatro meses, a distancia, pero juntos.">
+  <title>Mariana — cuatro meses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* ---- Paleta botánica: musgo, papel, salvia, miel — no "verde acento sobre negro" ---- */
+      --moss:#0f1d13;--moss-2:#16291b;--forest:#213a26;--fern:#3c5c34;
+      --sage:#b8cda0;--sage-dim:#8fa878;
+      --paper:#ede6d3;--paper-2:#f6f1e2;--paper-line:#d9cfb2;
+      --ink:#1b2a1c;--ink-soft:#3a4a37;
+      --honey:#d4a857;--honey-dim:#a8834a;
+      --text:#eef0e4;--muted:#9fae9a;--muted-2:#6f8069;
+      --shadow:0 40px 110px rgba(4,9,5,.45);
+      --ease:cubic-bezier(.19,.77,.3,.99);--ease-soft:cubic-bezier(.33,.62,.35,1)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--moss);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}
+    body.lock{overflow:hidden;height:100svh}
+    ::selection{background:var(--fern);color:var(--paper-2)}
+
+    /* film grain — kept subtle, gives the paper/photo sections a physical quality */
+    .grain{position:fixed;inset:-30%;width:160%;height:160%;pointer-events:none;z-index:39;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");animation:grain .3s steps(2) infinite}
+    @keyframes grain{0%{transform:translate3d(0,0,0)}25%{transform:translate3d(-1%,1%,0)}50%{transform:translate3d(1%,-1%,0)}75%{transform:translate3d(1%,1%,0)}100%{transform:translate3d(0,0,0)}}
+
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .leafmark{display:inline-block;width:.62em;height:.62em;border-radius:0 60% 0 60%;background:currentColor;transform:rotate(8deg)}
+
+    /* ---------- top bar: quiet, a leaf mark instead of a generic wordmark ---------- */
+    .topbar{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:35;width:min(1120px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;padding:11px 10px 11px 20px;border:1px solid rgba(184,205,160,.14);background:rgba(12,21,14,.66);backdrop-filter:blur(20px);border-radius:999px;transition:transform .5s var(--ease)}
+    .topbar.hide{transform:translate(-50%,-140%)}
+    .brand{display:flex;align-items:center;gap:9px;font-family:"Cormorant Garamond",serif;font-size:1.18rem;font-style:italic;color:var(--sage)}
+    .nav{display:flex;gap:2px}
+    .nav a{font-size:.72rem;color:#a9b6a2;padding:10px 13px;border-radius:999px;transition:.25s color,.25s background}
+    .nav a:hover{color:var(--paper-2);background:rgba(184,205,160,.09)}
+
+    /* ---------- hero: a real photo anchors it, asymmetric, not centered-text-on-gradient ---------- */
+    .hero{min-height:100svh;position:relative;overflow:hidden;display:grid;align-items:end;padding:150px 0 64px;background:var(--moss)}
+    .hero-photo{position:absolute;inset:0;z-index:0}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 22%;filter:saturate(.82) contrast(1.03) brightness(.62)}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:
+      linear-gradient(to top,var(--moss) 2%,rgba(15,29,19,.72) 30%,rgba(15,29,19,.28) 56%,rgba(15,29,19,.55) 100%),
+      linear-gradient(115deg,rgba(15,29,19,.85) 8%,rgba(15,29,19,.15) 46%,transparent 62%)}
+    .hero-content{position:relative;z-index:2;width:min(1180px,calc(100% - 40px));margin:auto}
+    .hero-eyebrow{display:flex;align-items:center;gap:10px;color:var(--sage);font-size:.72rem;letter-spacing:.02em;margin-bottom:20px}
+    .hero-eyebrow .rule{width:34px;height:1px;background:var(--fern)}
+    .hero h1{font:500 clamp(3.4rem,9vw,7.2rem)/.92 "Cormorant Garamond",serif;letter-spacing:-.02em;margin:0;max-width:15ch;color:var(--paper-2)}
+    .hero h1 em{font-style:italic;font-weight:400;color:var(--sage)}
+    .hero .sub{max-width:52ch;margin:26px 0 0;color:#c7d0bf;line-height:1.75;font-size:clamp(1rem,1.6vw,1.15rem)}
+    .hero .sub b{color:var(--paper-2);font-weight:500}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+    .btn{border:1px solid rgba(238,240,228,.22);background:rgba(238,240,228,.08);color:var(--paper-2);padding:13px 19px;border-radius:999px;cursor:pointer;transition:background .3s,transform .3s,border-color .3s;font-size:.88rem}
+    .btn:hover{background:rgba(238,240,228,.15);transform:translateY(-2px)}
+    .btn.ghost{background:transparent;border-color:rgba(238,240,228,.14);color:#b9c4b1}
+    .btn.ghost:hover{border-color:rgba(238,240,228,.3)}
+    .scrollhint{position:absolute;right:40px;bottom:32px;z-index:2;writing-mode:vertical-rl;font-size:.64rem;letter-spacing:.14em;color:#8a9884;display:flex;align-items:center;gap:9px}
+    .scrollhint .ln{width:1px;height:38px;background:linear-gradient(to bottom,transparent,#7c8a76)}
+    @media(max-width:640px){.scrollhint{display:none}}
+
+    /* ---------- sections: shared rhythm, but each block is composed differently ---------- */
+    section{padding:120px 0;position:relative}
+    .head{margin-bottom:52px;max-width:640px}
+    .head .eyebrow{font-size:.72rem;color:var(--sage-dim);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+    .head .eyebrow .rule{width:22px;height:1px;background:var(--fern)}
+    .head h2{font:500 clamp(2.5rem,5.4vw,4.6rem)/1.02 "Cormorant Garamond",serif;letter-spacing:-.015em;margin:0 0 16px;color:var(--paper-2)}
+    .head h2 em{font-style:italic;color:var(--sage)}
+    .head p{color:#8fa089;line-height:1.75;font-size:1rem;max-width:46ch;margin:0}
+
+    /* ---------- "ella": a long-form column, like a letter, not two matching cards ---------- */
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+    .about-lede{font:400 italic clamp(1.5rem,2.6vw,2rem)/1.4 "Cormorant Garamond",serif;color:var(--sage);margin:0}
+    .about-body{border-left:1px solid rgba(184,205,160,.16);padding-left:38px}
+    .about-body p{color:#c2cdba;line-height:1.9;font-size:1.02rem;margin:0 0 22px;max-width:56ch}
+    .about-body p:last-child{margin-bottom:0}
+    .about-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+    .about-tags span{border:1px solid rgba(184,205,160,.16);padding:7px 13px;border-radius:999px;font-size:.7rem;color:var(--muted)}
+    @media(max-width:900px){.about{grid-template-columns:1fr;gap:30px}.about-body{padding-left:0;border-left:0;padding-top:26px;border-top:1px solid rgba(184,205,160,.14)}}
+
+    /* ---------- gallery: organic collage, gentle rotation, not uniform rounded cards ---------- */
+    .gallery{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}
+    .frame{position:relative;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);isolation:isolate;background:var(--forest)}
+    .frame img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.02)}
+    .frame:before{content:"";position:absolute;inset:0;border:1px solid rgba(237,230,211,.14);z-index:2;pointer-events:none}
+    .frame:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,7,.5),transparent 45%);pointer-events:none}
+    .frame.main{min-height:560px;transform:rotate(-1.2deg)}
+    .frame.second{min-height:340px;transform:rotate(1.4deg);margin-left:auto;width:88%}
+    .caption{position:absolute;left:20px;right:20px;bottom:18px;z-index:3;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.5rem;color:var(--paper-2)}
+    .tape{position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:74px;height:26px;background:rgba(237,230,211,.16);border:1px solid rgba(237,230,211,.2);z-index:3}
+    .missing{aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:30px;color:var(--muted-2);background:linear-gradient(150deg,var(--forest),var(--moss-2));border-radius:6px;border:1px dashed rgba(184,205,160,.22)}
+    .missing strong{display:block;color:var(--sage);font:italic 500 1.7rem "Cormorant Garamond",serif;margin-bottom:8px}
+    .missing small{font-family:"DM Sans",sans-serif;line-height:1.6;color:var(--muted-2);font-size:.78rem}
+    @media(max-width:860px){.gallery{grid-template-columns:1fr}.frame.second{width:100%;margin-left:0}}
+
+    /* ---------- letters: paper card, index as real navigation — kept but de-genericized ---------- */
+    .letter-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+    .letter-nav button{border:1px solid rgba(184,205,160,.15);background:rgba(184,205,160,.03);color:#8fa089;padding:9px 14px;border-radius:999px;cursor:pointer;transition:.22s;font-size:.82rem}
+    .letter-nav button.active{color:var(--moss);border-color:var(--sage);background:var(--sage)}
+    .letter-nav button:hover:not(.active){color:var(--paper-2);border-color:rgba(184,205,160,.35)}
+    .letter-card{border-radius:4px;overflow:hidden;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:.62fr 1.38fr;box-shadow:var(--shadow);position:relative;min-height:400px}
+    .letter-card.dark{background:var(--moss-2);color:var(--text)}
+    .letter-side{padding:44px 36px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,rgba(0,0,0,.035),transparent)}
+    .letter-card.dark .letter-side{background:linear-gradient(165deg,rgba(255,255,255,.03),transparent)}
+    .letter-index{font-size:.68rem;letter-spacing:.06em;color:var(--muted-2);font-family:"DM Sans",sans-serif}
+    .letter-card.dark .letter-index{color:var(--muted)}
+    .letter-mood{font:italic 400 1.7rem/1.15 "Cormorant Garamond",serif;color:var(--fern);margin-top:14px}
+    .letter-card.dark .letter-mood{color:var(--sage)}
+    .letter-side h3{font:500 clamp(2.1rem,4vw,3.2rem)/.95 "Cormorant Garamond",serif;margin:10px 0 0;letter-spacing:-.01em}
+    .letter-arrow{display:inline-flex;gap:9px;align-items:center;color:inherit;background:none;border:0;padding:0;margin-top:28px;cursor:pointer;font-size:.72rem;letter-spacing:.04em;opacity:.62;width:max-content;transition:opacity .25s,gap .25s}
+    .letter-arrow:hover{opacity:1;gap:13px}
+    .letter-body{padding:48px 50px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(27,42,28,.09)}
+    .letter-card.dark .letter-body{border-left-color:rgba(238,240,228,.08)}
+    .letter-body p{font:400 clamp(1.3rem,2.4vw,1.65rem)/1.6 "Cormorant Garamond",serif;margin:0;max-width:34ch}
+    .letter-body .post{font:500 .78rem/1.8 "DM Sans",sans-serif;color:var(--muted-2);margin-top:24px;font-style:normal}
+    .letter-card.dark .letter-body .post{color:var(--muted)}
+    @media(max-width:800px){.letter-card{grid-template-columns:1fr}.letter-side{border-bottom:1px solid rgba(27,42,28,.09)}.letter-card.dark .letter-side{border-bottom-color:rgba(238,240,228,.08)}.letter-body{border-left:0;padding-top:32px}}
+
+    /* ---------- poems: notebook-leaf feel, quieter than cards ---------- */
+    .poem-switch{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
+    .poem-switch button{border:1px solid rgba(184,205,160,.15);background:transparent;color:#8fa089;padding:9px 14px;border-radius:999px;cursor:pointer;font-size:.82rem;transition:.2s}
+    .poem-switch button.active{background:rgba(212,168,87,.14);border-color:rgba(212,168,87,.4);color:var(--honey)}
+    .poems-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(184,205,160,.12);border:1px solid rgba(184,205,160,.12);border-radius:4px;overflow:hidden;margin-top:18px}
+    .poem{position:relative;padding:38px;min-height:250px;background:var(--moss);display:flex;flex-direction:column;justify-content:space-between}
+    .poem .type{font-size:.68rem;color:var(--muted-2);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.05rem}
+    .poem p{font:400 italic clamp(1.3rem,2vw,1.55rem)/1.42 "Cormorant Garamond",serif;margin:20px 0 0;color:#dce3d3}
+    .poem .credit{margin-top:22px;font-size:.72rem;color:var(--muted-2);font-family:"DM Sans",sans-serif}
+    @media(max-width:680px){.poems-grid{grid-template-columns:1fr}}
+
+    /* ---------- music: cassette instead of generic vinyl-with-gradient ---------- */
+    .music{border-radius:4px;overflow:hidden;background:linear-gradient(155deg,var(--forest),var(--moss-2));display:grid;grid-template-columns:340px 1fr;box-shadow:var(--shadow);border:1px solid rgba(184,205,160,.1)}
+    .tape-wrap{display:grid;place-items:center;padding:40px;background:radial-gradient(circle at 50% 40%,rgba(184,205,160,.09),transparent 65%)}
+    .cassette{width:230px;height:148px;border-radius:10px;background:linear-gradient(160deg,#e7dfc6,#d4c9a3);position:relative;box-shadow:0 24px 54px rgba(0,0,0,.5);padding:14px}
+    .cassette-window{position:absolute;inset:14px 14px auto 14px;height:78px;background:#1b2a1c;border-radius:5px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+    .reel{width:40px;height:40px;border-radius:50%;background:repeating-conic-gradient(var(--paper) 0 8deg,#7c8a76 8deg 16deg);position:relative;animation:spin 2.4s linear infinite paused}
+    .reel:before{content:"";position:absolute;inset:32%;border-radius:50%;background:#1b2a1c}
+    .cassette.play .reel{animation-play-state:running}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .cassette-label{position:absolute;left:14px;right:14px;bottom:14px;top:98px;background:var(--paper-2);border-radius:3px;display:grid;place-items:center;font:italic 500 1.1rem "Cormorant Garamond",serif;color:var(--ink)}
+    .music-copy{padding:48px 46px}
+    .music-copy .eyebrow{font-size:.72rem;color:var(--sage-dim);display:flex;align-items:center;gap:9px;margin-bottom:16px}
+    .music-copy .eyebrow .rule{width:22px;height:1px;background:var(--fern)}
+    .music-copy h3{font:500 clamp(1.9rem,4vw,3rem)/1.02 "Cormorant Garamond",serif;margin:0 0 14px;color:var(--paper-2)}
+    .music-copy p{color:#a6b39f;line-height:1.8;max-width:46ch;margin:0}
+    .audio-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .audio-row button{border:1px solid rgba(238,240,228,.18);background:rgba(238,240,228,.06);color:var(--paper-2);padding:11px 16px;border-radius:999px;cursor:pointer;font-size:.85rem;transition:.25s}
+    .audio-row button:hover{background:rgba(238,240,228,.13)}
+    .audio-row span{font-size:.76rem;color:var(--muted-2)}
+    .audio-status{margin-top:14px;color:var(--muted-2);font-size:.74rem}
+    @media(max-width:760px){.music{grid-template-columns:1fr}.tape-wrap{padding:34px}}
+
+    /* ---------- timeline: numbered — this content genuinely is a sequence ---------- */
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(184,205,160,.12);border-top:1px solid rgba(184,205,160,.12);border-bottom:1px solid rgba(184,205,160,.12)}
+    .step{padding:34px 26px 6px;background:var(--moss)}
+    .step .n{font:italic 400 2.6rem/1 "Cormorant Garamond",serif;color:var(--honey)}
+    .step h3{font:500 1.7rem/1.05 "Cormorant Garamond",serif;margin:14px 0 10px;color:var(--paper-2)}
+    .step p{color:#8fa089;line-height:1.72;font-size:.9rem;margin:0}
+    @media(max-width:900px){.timeline{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.timeline{grid-template-columns:1fr}}
+
+    /* ---------- final ---------- */
+    .final{padding-top:100px}
+    .final-card{border-radius:6px;padding:clamp(50px,10vw,110px) clamp(30px,7vw,90px);border:1px solid rgba(184,205,160,.14);background:linear-gradient(160deg,var(--forest) 0%,var(--moss) 68%);text-align:center;position:relative;overflow:hidden}
+    .final-card .orn{font:italic 400 3.2rem "Cormorant Garamond",serif;color:var(--honey);opacity:.85}
+    .final-card h2{font:500 clamp(2.6rem,7vw,5.4rem)/.98 "Cormorant Garamond",serif;margin:20px auto 0;letter-spacing:-.02em;color:var(--paper-2)}
+    .final-card p{max-width:56ch;margin:26px auto 0;color:#b6c2ad;line-height:1.85}
+    .final-card p strong{color:var(--paper-2);font-weight:500}
+    .seal{margin:36px auto 0;width:96px;height:96px;border:1px solid rgba(212,168,87,.34);border-radius:50%;display:grid;place-items:center;color:var(--honey);font:italic 500 1.55rem "Cormorant Garamond",serif}
+    .tiny{margin-top:22px;color:var(--muted-2);font-size:.74rem}
+
+    footer{padding:44px 0 76px;text-align:center;color:var(--muted-2);font-size:.74rem}
+
+    /* ---------- gate (opening envelope) — the one deliberate orchestrated moment ---------- */
+    .gate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 40%,var(--forest),var(--moss) 72%)}
+    .gate.hide{display:none}
+    .envelope{width:min(500px,100%);text-align:center}
+    .env-icon{width:80px;height:58px;margin:0 auto 30px;position:relative}
+    .env-icon .body{position:absolute;inset:0;border-radius:5px;border:1px solid rgba(184,205,160,.4);background:var(--forest)}
+    .env-icon .flap{position:absolute;inset:0;clip-path:polygon(0 0,50% 52%,100% 0,100% 8%,50% 60%,0 8%);background:var(--sage)}
+    .envelope .eyebrow{font-size:.7rem;color:var(--sage-dim);margin-bottom:20px}
+    .envelope h2{font:500 clamp(2.6rem,7vw,3.6rem)/1 "Cormorant Garamond",serif;margin:0;color:var(--paper-2)}
+    .envelope p{color:#a6b39f;line-height:1.8;max-width:38ch;margin:16px auto 26px}
+    .open{border:0;border-radius:999px;padding:14px 22px;background:var(--paper-2);color:var(--moss);cursor:pointer;font-weight:600;font-size:.92rem;transition:transform .3s,box-shadow .3s}
+    .open:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+    .hint{display:block;color:var(--muted-2);font-size:.7rem;margin-top:17px}
+
+    /* scroll reveal — direction varies by content type instead of one uniform tween everywhere */
+    .reveal{opacity:0}
+    .reveal.up{transform:translateY(22px)}
+    .reveal.side{transform:translateX(-18px)}
+    .reveal.is-visible{opacity:1;transform:none;transition:opacity .9s var(--ease-soft),transform .9s var(--ease-soft)}
+
+    /* gate close + hero entrance — native CSS, no external animation library required */
+    .gate{transition:opacity .6s var(--ease-soft)}
+    .gate.closing{opacity:0;pointer-events:none}
+    .envelope{transition:opacity .35s ease,transform .35s ease}
+    .envelope.closing{opacity:0;transform:translateY(-8px)}
+    .hero-eyebrow,.hero h1,.hero .sub,.hero-actions{opacity:0;transform:translateY(24px);animation:none}
+    body:not(.lock) .hero-eyebrow{animation:riseIn .8s var(--ease-soft) .05s forwards}
+    body:not(.lock) .hero h1{animation:riseIn .8s var(--ease-soft) .16s forwards}
+    body:not(.lock) .hero .sub{animation:riseIn .8s var(--ease-soft) .27s forwards}
+    body:not(.lock) .hero-actions{animation:riseIn .8s var(--ease-soft) .38s forwards}
+    @keyframes riseIn{to{opacity:1;transform:none}}
+    .hero-photo img{transition:transform 1.6s var(--ease-soft)}
+    body.lock .hero-photo img{transform:scale(1.08)}
+
+    @media(max-width:860px){
+      .nav a{display:none}
+      .nav:after{content:"";width:8px;height:8px;border-radius:0 50% 0 50%;background:var(--sage);display:block;margin-right:6px}
+    }
+    @media(max-width:640px){
+      .wrap{width:min(calc(100% - 28px),1180px)}
+      section{padding:88px 0}
+      .hero{padding-top:118px}
+      .letter-body,.letter-side,.music-copy{padding:30px}
+      .timeline .step{padding:28px 22px 4px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body class="lock">
+  <div class="grain"></div>
+
+  <div class="gate" id="gate">
+    <div class="envelope">
+      <div class="env-icon"><div class="body"></div><div class="flap"></div></div>
+      <div class="eyebrow">para la persona que más quiero</div>
+      <h2>Mariana.</h2>
+      <p>Cuatro meses, amor. Te hice algo.</p>
+      <button class="open" id="open">Ábrelo</button>
+      <span class="hint">eres mi todo</span>
+    </div>
+  </div>
+
+  <header class="topbar" id="topbar">
+    <div class="brand"><span class="leafmark"></span> te adoro</div>
+    <nav class="nav" aria-label="Navegación">
+      <a href="#ella">Mi niña</a><a href="#cartas">Cartas</a><a href="#poemas">Poemas</a><a href="#cancion">Canción</a><a href="#final">Nosotros</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-photo"><img src="/photos/mariana-01.jpg" alt=""></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="rule"></span> 17 · 05 · 2026</div>
+        <h1>Mariana <em>&amp; yo</em>,<br>cuatro meses.</h1>
+        <p class="sub">Cada día te amo un poco más que el anterior. <b>Cuatro meses siendo tuyo</b>, y no me cansa ni un segundo.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#cartas">Lee las cartas que te escribí</a>
+          <a class="btn ghost" href="#ella">Mira cómo te veo</a>
+        </div>
+      </div>
+      <div class="scrollhint"><span class="ln"></span> desliza, mi amor</div>
+    </section>
+
+    <section id="ella">
+      <div class="wrap">
+        <div class="about">
+          <div class="reveal side">
+            <div class="head" style="margin-bottom:0">
+              <div class="eyebrow"><span class="rule"></span> no solo eres mi novia</div>
+              <h2>Me encantas. <em>Me encantas tú.</em></h2>
+            </div>
+            <p class="about-lede">No hay una parte de ti que pueda separar de las demás.</p>
+          </div>
+          <div class="about-body reveal side">
+            <p>Yo te amo toda: tus celos, tu amor, tu personalidad. Me encanta que tengas una manera de ser tan tuya — realmente eres mi sueño. Que seas intensa, que tengas opiniones, que puedas hacerme reír con cosas que probablemente nadie más entendería.</p>
+            <p>Eres la persona más perfecta para mí, incluso en los días en que tú no lo sientes así. Y soy solo tuyo — no por obligación, ni porque haya una regla. Porque me nace. Me gusta que me quieras para ti, me gustan tus celos cuando vienen desde el amor, y me encanta poder mirarte y pensar que quiero ser de ella siempre.</p>
+            <div class="about-tags"><span>te elijo</span><span>te deseo</span><span>te admiro</span><span>te adoro</span><span>te amo entera</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> fotos que amo de ti</div>
+          <h2>Eres mi <em>paisaje</em> más hermoso.</h2>
+          <p>No sé por qué te ves tan bonita hasta en las fotos que tú crees que no son nada especial.</p>
+        </div>
+        <div class="gallery">
+          <figure class="frame main reveal up"><div class="tape"></div><img src="/photos/mariana-01.jpg" alt="Mariana"><figcaption class="caption">la niña que me trae loco</figcaption></figure>
+          <figure class="frame second reveal up" id="frame02"><img src="/photos/mariana-03.jpg" alt="Mariana"><figcaption class="caption">mi persona favorita</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="cartas">
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> abre según el día, mi amor</div>
+          <h2>Cuando te sientas <em>malita</em>, o así.</h2>
+          <p>No necesitas estar de buen humor para que te ame.</p>
+        </div>
+        <div class="reveal up">
+          <div class="letter-nav" id="letterNav"></div>
+          <article class="letter-card" id="letterCard"></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="poemas">
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> poemas que te escribí y nunca te envié</div>
+          <h2>La parte más <em>desnuda</em> de mí.</h2>
+        </div>
+        <div class="reveal up">
+          <div class="poem-switch" id="poemSwitch"></div>
+          <div class="poems-grid" id="poemsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cancion">
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> una canción que me recuerda a ti</div>
+          <h2>The Beatles — <em>Here, There and Everywhere</em>.</h2>
+          <p>Siempre pienso en ti y te llevo conmigo a todos lados.</p>
+        </div>
+        <div class="music reveal up">
+          <div class="tape-wrap">
+            <div class="cassette" id="cassette">
+              <div class="cassette-window"><div class="reel"></div><div class="reel"></div></div>
+              <div class="cassette-label">para ti</div>
+            </div>
+          </div>
+          <div class="music-copy">
+            <div class="eyebrow"><span class="rule"></span> tu canción</div>
+            <h3>Una canción que me recuerda a ti.</h3>
+            <p>Aunque, si soy honesto, mi canción favorita sigue siendo tu voz.</p>
+            <audio id="audio" preload="none"><source src="/music/beatles.mp3" type="audio/mpeg"></audio>
+            <div class="audio-row"><button id="play">▶ Reproducir</button><button id="pause">Ⅱ Pausar</button><span>se queda sonando de fondo si quieres</span></div>
+            <div class="audio-status" id="audioStatus">Toca reproducir para empezar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> cuatro meses siendo el amor de mi vida</div>
+          <h2>Eres lo mejor que me <em>pasó</em>.</h2>
+        </div>
+        <div class="timeline reveal up">
+          <article class="step"><div class="n">01</div><h3>El principio</h3><p>La primera vez que empezamos a darnos pistas fue tan bonito, tan divertido, tan nuestro. Yo simplemente respetaba tu espacio, pero te daba señales de que me gustabas muchísimo — aunque tú pensabas otra cosa.</p></article>
+          <article class="step"><div class="n">02</div><h3>Me fui acomodando a ti</h3><p>Lentamente me fui acostumbrando a ti, a tu voz, a tu humor. Y aunque siempre lo soñé, no me costó amarte; ha sido de las cosas más simples que he hecho. Cada día me enamoro un poco más.</p></article>
+          <article class="step"><div class="n">03</div><h3>Nuestro futuro</h3><p>Siempre sueño con un futuro a tu lado. Algún día simplemente despertar, girarme y poder besarte, dormir juntos, compartir cada pequeño momento. Ese día mi vida va a sentirse perfecta.</p></article>
+          <article class="step"><div class="n">04</div><h3>Por ahorita</h3><p>Mientras llega ese día, solo quiero amarte en cada segundo. Quiero ser tuyo, dejarme querer por ti. Quiero entregarte cada parte de mí, porque, mientras pueda elegirlo, quiero seguir siendo solo tuyo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="final" class="final">
+      <div class="wrap">
+        <div class="final-card reveal up">
+          <div class="orn">para ti</div>
+          <h2>Te amo, Mariana.</h2>
+          <p>Estoy tan, pero tan orgulloso de ti. Amo tu manera de pensar. Me derrite que seas tan tú. Me gustas toda, me gusta ser solo tuyo, simplemente me encantas.</p>
+          <p>Y entre todas las cosas que podría decirte en cuatro meses, quizá la más importante sea la más sencilla: <strong>no quiero a alguien que se parezca a ti. Te quiero a ti — esos ojos exactos, esos lunares que me memoricé, esa nariz, esa boca.</strong></p>
+          <div class="seal">mi amor</div>
+          <div class="tiny">cuatro meses · y no me canso de quererte cada día más</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>hecho para mi persona favorita · felices 4 meses, mi amor</footer>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+
+    // ---- Opening: the one deliberate orchestrated moment on the page. ----
+    // Pure CSS transitions/keyframes — no external animation library, so the
+    // envelope can never get stuck open on a slow connection or blocked CDN.
+    $('#open').addEventListener('click', () => {
+      $('.envelope').classList.add('closing');
+      $('#gate').classList.add('closing');
+      document.body.classList.remove('lock'); // triggers the hero riseIn keyframes
+      setTimeout(() => { $('#gate').style.display = 'none'; }, 650);
+    });
+
+    // ---- Scroll-driven reveals, direction pre-set per block via class (up / side) ----
+    const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.14});
+    $$('.reveal').forEach(el=>io.observe(el));
+
+    // ---- Topbar hides on scroll-down, returns on scroll-up (answers the user's action) ----
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      $('#topbar').classList.toggle('hide', y > lastY && y > 140);
+      lastY = y;
+    }, {passive:true});
+
+    // ---- Letters ----
+    const letters=[
+      {label:'Triste',mood:'cuando sientas que todo está mal',title:'Ven aquí.',body:'No tienes que estar bien para que yo te quiera. Puedes estar cansada, llorar, desconectarte o no tener ganas de explicar nada. Tu tristeza no te hace menos bonita, menos interesante ni menos querida. Descansa un poco. Respira. Y recuerda que no tienes que demostrarme nada para que me quede.',post:'Y sí: incluso con los ojos llorosos, sigo pensando que eres preciosa.'},
+      {label:'Enojada',mood:'cuando ardes',title:'Puedes enfadarte conmigo.',body:'No quiero quererte solo cuando eres fácil. Si estás enfadada, prefiero escucharte a ganar una discusión. Si necesitas espacio, te lo doy. Si quieres hablar, aquí estoy. Tu carácter fuerte también forma parte de la chica que adoro.',post:'Que tengas fuego no me asusta. Me gusta aprender a acercarme sin apagártelo.'},
+      {label:'Insegura',mood:'cuando no te ves como yo te veo',title:'Mírate desde aquí.',body:'No compitas con nadie. No necesito una versión perfecta de ti. Me encantas, sí, pero mi amor no depende de una foto, un espejo o un día en que te sientas especialmente linda. Te quiero cuando te arreglas y cuando estás hecha un desastre.',post:'Yo puedo recordarte lo preciosa que eres hasta que vuelvas a poder verlo tú.'},
+      {label:'Me extrañas',mood:'cuando la distancia duele',title:'Yo también estoy aquí.',body:'Guarda esta página como una pequeña prueba de que hay algo real al otro lado de la pantalla. Los kilómetros no convierten esto en menos nuestro. Algún día esta distancia será un recuerdo y esta página será la prueba de que la atravesamos juntos.',post:'Mientras tanto, abre esto y finge por un minuto que estoy sentado a tu lado.'},
+      {label:'Feliz',mood:'cuando te sientes imparable',title:'Presume conmigo.',body:'Cuéntame todo. La noticia grande, la tontería pequeña, el chiste absurdo, la victoria que nadie más entiende. Me encanta verte feliz. No quiero ser la persona que solo aparece cuando todo duele; también quiero estar para celebrarte.',post:'Tu alegría no me da envidia. Me encanta verla de cerca.'},
+      {label:'No duermes',mood:'cuando son las tantas',title:'Quédate un ratito.',body:'Imagina una habitación tranquila, verde, con una canción bajita. No tienes que resolver tu vida ahora. Puedes cerrar los ojos y pensar que te abrazo. Mañana seguirá habiendo cosas que hacer. Esta noche solo quiero que descanses.',post:'Buenas noches, mi niña. Sigues siendo mi persona favorita, incluso cuando son las 3:17.'}
+    ];
+    let letterIndex=0;
+    function renderLetterNav(){ $('#letterNav').innerHTML=letters.map((l,i)=>`<button class="${i===letterIndex?'active':''}" data-i="${i}">${l.label}</button>`).join(''); $$('#letterNav button').forEach(b=>b.onclick=()=>showLetter(+b.dataset.i)); }
+    function showLetter(i){
+      letterIndex=i; renderLetterNav();
+      const l=letters[i]; const card=$('#letterCard');
+      card.classList.toggle('dark', i===2 || i===3);
+      card.innerHTML=`<div class="letter-side"><div><div class="letter-index">carta 0${i+1} / 06</div><div class="letter-mood">${l.mood}</div><h3>${l.title}</h3></div><button class="letter-arrow" id="nextLetter">siguiente carta →</button></div><div class="letter-body"><p>${l.body}</p><div class="post">${l.post}</div></div>`;
+      $('#nextLetter').onclick=()=>showLetter((letterIndex+1)%letters.length);
+      card.querySelectorAll('.letter-side > *, .letter-body > *').forEach((el,i)=>{
+        el.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],
+          {duration:450,delay:i*40,easing:'cubic-bezier(.33,.62,.35,1)',fill:'backwards'});
+      });
+    }
+    showLetter(0);
+
+    // ---- Poems ----
+    const poemSets={
+      'Amor':[
+        ['carta abierta','Te amo en voz alta, en voz baja y en esos silencios donde todavía te estoy pensando.','para cuando quieras algo sencillo.'],
+        ['casa','Si alguna vez me preguntas qué lugar se siente como casa, probablemente te diga tu nombre antes de pensarlo.','para leer despacio.'],
+        ['elección','No quiero que seas mía porque tengas que serlo. Me gusta mucho más la idea de que me elijas porque, entre todas las posibilidades, todavía me escoges a mí.','esto me gusta de nosotros.'],
+        ['bonito','Me encanta hacerte sentir linda porque, cuando te miro, no estoy intentando convencerme de nada: simplemente lo veo.','para esos días de espejo difícil.']
+      ],
+      'Intensos':[
+        ['promesa','Arráncame la vida si alguna vez hace falta para cubrirte del frío; pero no me la devuelvas todavía, que todavía quiero gastarla queriéndote.','para tus noches más largas.'],
+        ['despacio','Quiero tener tiempo para memorizar cómo se siente pertenecer a una historia contigo.','sin prisa.'],
+        ['distancia','Hay noches en las que la distancia parece una criatura viva. Entonces pienso en ti y decido que no pienso dejar que gane.','para las noches largas.'],
+        ['fuego','No quiero apagar el incendio que eres. Quiero aprender dónde acercarme para que el fuego no me consuma y, aun así, seguir teniendo las manos cerca de ti.','para tu carácter.']
+      ],
+      'Madrugada':[
+        ['03:17','Si estás leyendo esto de madrugada, probablemente estés pensando demasiado. Ven: por unos minutos, piensa en mí.','sin resolver nada.'],
+        ['susurro','Te quiero de una forma bastante poco conveniente: apareces en canciones, chistes, libros, comidas y en la parte más absurda de mi cabeza.','culpa tuya.'],
+        ['última página','Y si alguna noche piensas que ya lo he dicho todo, recuerda esto: todavía me faltan miles de páginas para hablar de ti.','continuará.'],
+        ['después','Después de discutir, después de extrañarnos, después del orgullo: sigues siendo tú. Y eso hace que todavía quiera acercarme.','para volver.']
+      ]
+    };
+    let poemSet='Amor';
+    function renderPoems(){
+      $('#poemSwitch').innerHTML=Object.keys(poemSets).map(k=>`<button class="${k===poemSet?'active':''}" data-set="${k}">${k}</button>`).join('');
+      $('#poemsGrid').innerHTML=poemSets[poemSet].map(([t,p,c])=>`<article class="poem"><div class="type">${t}</div><p>${p}</p><div class="credit">${c}</div></article>`).join('');
+      $$('#poemSwitch button').forEach(b=>b.onclick=()=>{poemSet=b.dataset.set;renderPoems()});
+      $$('#poemsGrid .poem').forEach((el,i)=>{
+        el.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],
+          {duration:500,delay:i*60,easing:'cubic-bezier(.33,.62,.35,1)',fill:'backwards'});
+      });
+    }
+    renderPoems();
+
+    // ---- Local music player (expects a legally obtained local file) ----
+    const audio=$('#audio'),cassette=$('#cassette'),status=$('#audioStatus');
+    $('#play').onclick=async()=>{try{await audio.play();cassette.classList.add('play');status.textContent='Reproduciendo tu archivo local.'}catch(e){status.textContent='No hay audio todavía. Añade public/music/beatles.mp3.'}};
+    $('#pause').onclick=()=>{audio.pause();cassette.classList.remove('play');status.textContent='En pausa.'};
+    audio.addEventListener('ended',()=>cassette.classList.remove('play'));
+    audio.addEventListener('error',()=>{status.textContent='Añade public/music/beatles.mp3 para activar esta parte.'});
+
+    // ---- Smooth anchor nav (native, no library) ----
+    $$('.nav a').forEach(a=>a.addEventListener('click', e=>{
+      e.preventDefault();
+      $(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+    // ---- Photo fallbacks (if a file is missing at deploy time) ----
+    $$('.frame img').forEach(img=>{
+      img.addEventListener('error', ()=>{
+        const frame = img.closest('.frame');
+        const name = img.getAttribute('src').split('/').pop();
+        frame.innerHTML = `<div class="missing"><div><strong>Tu foto va aquí.</strong><small>public/photos/${name}</small></div></div>`;
+      });
+    });
+  </script>
+</body>
+</html>
