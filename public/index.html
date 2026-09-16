@@ -224,6 +224,60 @@
       .timeline .step{padding:28px 22px 4px}
     }
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+
+    /* ---------- Beatles playlist: Spotify-inspired, but native to the letter ---------- */
+    #playlist{padding:110px 0;background:
+      radial-gradient(circle at 78% 18%,rgba(212,168,87,.10),transparent 30%),
+      linear-gradient(180deg,#0d1910 0%,#101e14 100%)}
+    .playlist-shell{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+      gap:28px;align-items:stretch}
+    .playlist-panel,.now-playing{border:1px solid rgba(184,205,160,.13);background:rgba(246,241,226,.045);
+      border-radius:28px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.22)}
+    .playlist-panel{padding:18px}
+    .playlist-top{display:flex;align-items:center;justify-content:space-between;padding:8px 8px 16px}
+    .playlist-title{font-family:"Cormorant Garamond",serif;font-size:1.55rem;color:var(--paper-2)}
+    .playlist-count{font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .track{display:grid;grid-template-columns:38px 46px 1fr auto;gap:13px;align-items:center;
+      width:100%;padding:11px 10px;border:0;border-radius:16px;background:transparent;color:inherit;text-align:left;cursor:pointer;
+      transition:background .2s,transform .2s}
+    .track:hover{background:rgba(184,205,160,.07);transform:translateX(2px)}
+    .track.active{background:rgba(212,168,87,.10)}
+    .track-num{font-size:.72rem;color:var(--muted-2);text-align:center}
+    .track.active .track-num{color:var(--honey)}
+    .track-cover{width:46px;height:46px;border-radius:9px;display:grid;place-items:center;
+      background:linear-gradient(135deg,#d9cfb2,#81795f);color:#172016;font-family:Georgia,serif;font-weight:700;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
+    .track-info{min-width:0}
+    .track-name{display:block;color:var(--paper-2);font-size:.91rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .track-artist{display:block;color:var(--muted);font-size:.73rem;margin-top:3px}
+    .track-time{font-variant-numeric:tabular-nums;color:var(--muted-2);font-size:.7rem}
+    .now-playing{padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:500px}
+    .now-label{font-size:.67rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-dim)}
+    .record{width:min(270px,70vw);aspect-ratio:1;margin:25px auto 28px;border-radius:50%;
+      background:repeating-radial-gradient(circle,#1b251b 0 2px,#0c120d 3px 5px);
+      box-shadow:0 25px 50px rgba(0,0,0,.45);display:grid;place-items:center;position:relative}
+    .record:before{content:"";width:32%;aspect-ratio:1;border-radius:50%;background:var(--honey);box-shadow:inset 0 0 0 8px rgba(15,29,19,.35)}
+    .record:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#111}
+    .record.spinning{animation:spin 5s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .now-meta{text-align:center}
+    .now-meta h3{margin:7px 0 4px;font-family:"Cormorant Garamond",serif;font-size:1.9rem;font-weight:500;color:var(--paper-2)}
+    .now-meta p{margin:0;color:var(--muted);font-size:.8rem}
+    .playlist-player{margin-top:22px}
+    .progress{height:3px;background:rgba(237,230,211,.15);border-radius:99px;overflow:hidden}
+    .progress span{display:block;width:0;height:100%;background:var(--honey);transition:width .15s linear}
+    .player-times{display:flex;justify-content:space-between;margin-top:7px;font-size:.65rem;color:var(--muted-2)}
+    .player-controls{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:16px}
+    .player-controls button{border:1px solid rgba(184,205,160,.16);background:rgba(184,205,160,.07);color:var(--paper-2);
+      border-radius:50%;width:42px;height:42px;cursor:pointer}
+    .player-controls .main-control{width:52px;height:52px;background:var(--paper-2);color:var(--moss);border:0;font-size:1.05rem}
+    .playlist-note{margin-top:13px;text-align:center;font-size:.66rem;line-height:1.5;color:var(--muted-2)}
+    @media(max-width:820px){
+      .playlist-shell{grid-template-columns:1fr}
+      .now-playing{min-height:0}
+      .record{width:min(220px,60vw)}
+    }
+    
   </style>
 </head>
 <body class="lock">
@@ -321,6 +375,51 @@
         </div>
       </div>
     </section>
+
+
+    <section id="playlist">
+      <div class="wrap">
+        <div class="head reveal up">
+          <div class="eyebrow"><span class="rule"></span> para Mariana, con los Beatles</div>
+          <h2>Diez canciones para cuando quieras <em>sentirte cerca</em>.</h2>
+          <p>Una pequeña playlist hecha para ti. Porque si hay una banda que tenía que estar aquí, eran ellos.</p>
+        </div>
+
+        <div class="playlist-shell reveal up">
+          <div class="playlist-panel">
+            <div class="playlist-top">
+              <div class="playlist-title">Para Mariana ♡</div>
+              <div class="playlist-count">10 canciones · The Beatles</div>
+            </div>
+            <div id="beatlesTracks"></div>
+          </div>
+
+          <div class="now-playing">
+            <div>
+              <div class="now-label">reproduciendo ahora</div>
+              <div class="record" id="beatlesRecord"></div>
+              <div class="now-meta">
+                <h3 id="beatlesTitle">Here, There and Everywhere</h3>
+                <p id="beatlesArtist">The Beatles · Revolver · 1966</p>
+              </div>
+            </div>
+
+            <div class="playlist-player">
+              <div class="progress"><span id="beatlesProgress"></span></div>
+              <div class="player-times"><span id="beatlesCurrent">0:00</span><span id="beatlesDuration">0:00</span></div>
+              <div class="player-controls">
+                <button id="beatlesPrev" aria-label="Canción anterior">‹‹</button>
+                <button id="beatlesMain" class="main-control" aria-label="Reproducir">▶</button>
+                <button id="beatlesNext" aria-label="Siguiente canción">››</button>
+              </div>
+              <div class="playlist-note">Los archivos de audio se cargan desde <code>public/music/</code>. La primera canción usa el archivo que ya viene en el proyecto.</div>
+              <audio id="beatlesAudio" preload="metadata"></audio>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section id="cancion">
       <div class="wrap">
@@ -483,6 +582,75 @@
         frame.innerHTML = `<div class="missing"><div><strong>Tu foto va aquí.</strong><small>public/photos/${name}</small></div></div>`;
       });
     });
+
+    // ---- Beatles playlist: 10 tracks, local audio files ----
+    const beatlesTracks = [
+      ['Here, There and Everywhere','The Beatles · Revolver · 1966','here-there-and-everywhere.mp3','2:26'],
+      ['Something','The Beatles · Abbey Road · 1969','something.mp3','3:03'],
+      ['In My Life','The Beatles · Rubber Soul · 1965','in-my-life.mp3','2:28'],
+      ['Yesterday','The Beatles · Help! · 1965','yesterday.mp3','2:05'],
+      ['Let It Be','The Beatles · Let It Be · 1970','let-it-be.mp3','4:03'],
+      ['Here Comes the Sun','The Beatles · Abbey Road · 1969','here-comes-the-sun.mp3','3:05'],
+      ['And I Love Her','The Beatles · A Hard Day’s Night · 1964','and-i-love-her.mp3','2:28'],
+      ['Blackbird','The Beatles · The Beatles · 1968','blackbird.mp3','2:18'],
+      ['Norwegian Wood (This Bird Has Flown)','The Beatles · Rubber Soul · 1965','norwegian-wood.mp3','2:05'],
+      ['All You Need Is Love','The Beatles · Yellow Submarine · 1969','all-you-need-is-love.mp3','3:47']
+    ];
+
+    const beatlesAudio=$('#beatlesAudio'), beatlesRecord=$('#beatlesRecord');
+    const beatlesTitle=$('#beatlesTitle'), beatlesArtist=$('#beatlesArtist');
+    const beatlesProgress=$('#beatlesProgress'), beatlesCurrent=$('#beatlesCurrent'), beatlesDuration=$('#beatlesDuration');
+    const beatlesMain=$('#beatlesMain'), beatlesTracksEl=$('#beatlesTracks');
+    let beatlesIndex=0;
+
+    function fmtTime(s){
+      if(!Number.isFinite(s)) return '0:00';
+      const m=Math.floor(s/60), sec=Math.floor(s%60).toString().padStart(2,'0');
+      return `${m}:${sec}`;
+    }
+    function renderBeatlesTracks(){
+      beatlesTracksEl.innerHTML=beatlesTracks.map((t,i)=>`
+        <button class="track ${i===beatlesIndex?'active':''}" data-track="${i}">
+          <span class="track-num">${String(i+1).padStart(2,'0')}</span>
+          <span class="track-cover">♫</span>
+          <span class="track-info"><span class="track-name">${t[0]}</span><span class="track-artist">${t[1]}</span></span>
+          <span class="track-time">${t[3]}</span>
+        </button>`).join('');
+      $$('#beatlesTracks .track').forEach(b=>b.onclick=()=>loadBeatles(Number(b.dataset.track),true));
+    }
+    function loadBeatles(i,autoplay=false){
+      beatlesIndex=(i+beatlesTracks.length)%beatlesTracks.length;
+      const t=beatlesTracks[beatlesIndex];
+      beatlesTitle.textContent=t[0]; beatlesArtist.textContent=t[1];
+      beatlesAudio.src='/music/'+t[2]; beatlesProgress.style.width='0%';
+      beatlesCurrent.textContent='0:00'; beatlesDuration.textContent=t[3];
+      renderBeatlesTracks();
+      if(autoplay) beatlesAudio.play().then(()=>setBeatlesPlaying(true)).catch(()=>{
+        setBeatlesPlaying(false);
+      });
+    }
+    function setBeatlesPlaying(on){
+      beatlesRecord.classList.toggle('spinning',on);
+      beatlesMain.textContent=on?'Ⅱ':'▶';
+      beatlesMain.setAttribute('aria-label',on?'Pausar':'Reproducir');
+    }
+    beatlesMain.onclick=()=>{
+      if(beatlesAudio.paused) beatlesAudio.play().then(()=>setBeatlesPlaying(true)).catch(()=>setBeatlesPlaying(false));
+      else {beatlesAudio.pause();setBeatlesPlaying(false);}
+    };
+    $('#beatlesPrev').onclick=()=>loadBeatles(beatlesIndex-1,true);
+    $('#beatlesNext').onclick=()=>loadBeatles(beatlesIndex+1,true);
+    beatlesAudio.addEventListener('timeupdate',()=>{
+      const pct=beatlesAudio.duration?(beatlesAudio.currentTime/beatlesAudio.duration)*100:0;
+      beatlesProgress.style.width=pct+'%'; beatlesCurrent.textContent=fmtTime(beatlesAudio.currentTime);
+      beatlesDuration.textContent=fmtTime(beatlesAudio.duration) || beatlesTracks[beatlesIndex][3];
+    });
+    beatlesAudio.addEventListener('loadedmetadata',()=>beatlesDuration.textContent=fmtTime(beatlesAudio.duration));
+    beatlesAudio.addEventListener('play',()=>setBeatlesPlaying(true));
+    beatlesAudio.addEventListener('pause',()=>setBeatlesPlaying(false));
+    beatlesAudio.addEventListener('ended',()=>loadBeatles(beatlesIndex+1,true));
+    loadBeatles(0);
+
   </script>
 </body>
 </html>
