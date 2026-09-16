@@ -531,154 +531,25 @@
     // ---- Poems ----
     const poemSets={
       'Amor':[
-        ['te amo','Yo... Te amo\n\nA veces me pregunto por el día en que me enamoré de ti.\n\nFue imposible determinar un día en particular en el que todo comenzara.\n\nUn día simplemente estabas ahí y al otro día estabas en todas partes.\n\nEn mi cabeza. En las palabras que anhelaba decirte. En las canciones que escuchaba. En el anhelo de hablar contigo sin importar qué hubiera que hablar.\n\nY ahora no sé cómo explicarle a mi cerebro que antes de ti había una vida mía donde no te estaba buscando.\n\nEs tan raro.\n\nEl amor que he encontrado en ti se ha vuelto una parte tan integral de mí mismo que a veces olvido que alguna vez no te amé.\n\nY te amo.\n\nOh Dios mío, cuanto te amo.\n\nHay días en los que quisiera sacar todo lo que siento para que puedas ver por qué a veces simplemente me quedo ahí mirándote y no sé qué decir.\n\nPorque parece que no hay palabras que puedan expresar lo que siento por ti.\n\nY todo lo que tengo es:\n\nTe amo.\n\nTe amo tanto.','para cuando no pueda decirlo en voz alta.'],
+        ['te amo','Te amo cuando el silencio regresa al mundo y mi mente recuerda tu nombre, como el agua encuentra su camino de regreso a las fuentes, como el hombre encuentra su camino de regreso a lo que una vez dijo que no necesitaba.\n\nTe amo sin saber si el amor ayuda, o si el amor es una ganancia o una pérdida; solo sé que de todas las formas diferentes de estar vivo, la mía se ha parecido a la tuya y no quiere aprender a desaparecer.\n\nY si un día todo lo que nos pertenece deja de existir y el tiempo recupera lo que nos ha prestado, una sola cosa sería suficiente para toda mi vida: haber vivido una vida en la que por un momento mi corazón haya conocido el lugar donde quería estar: contigo.','para cuando quieras leer algo bonito.'],
 
-        ['tú','II- Tú\n\n¡Qué extraño ser eres tú!\n\nEntre todos los seres que existen, todas las caras que voy a conocer, todas las historias que nunca viviré...\n\nSolo tú.\n\n¡Qué afortunado soy!\n\nPorque no necesito ninguna otra cara. No necesito ninguna otra voz. No necesito aprender ningún otro gesto ni acostumbrarme a ninguna otra forma de amar.\n\nNecesito aprenderte.\n\nDescubrir una y otra vez estos pequeños detalles sobre ti que tú mismo probablemente ni siquiera sepas.\n\nRecordar tu risa. Las palabras que dices. El cambio de tu cara cuando algo te sorprende.\n\nNecesito aprenderte.\n\nNo de la misma manera en que aprendo alguna vieja historia familiar,\n\nsino de la misma manera en que escucho una vieja canción una y otra vez solo porque sigo descubriéndola.\n\n¡Qué hermoso darse cuenta de que entre todos estos seres mi corazón dijo tu nombre!\n\nNo sé qué me hiciste.\n\nPero si tuviera que empezar de nuevo...\n\nTe encontraría de nuevo.','porque eres tú.'],
+        ['tú','No fue solo un sueño en el que me enamoré, o una ilusión concebida para no estar solo. Me enamoré de ti simplemente porque eres tan real: con tus heridas, con tus dudas, con tu risa en los momentos equivocados y a veces incluso tú mismo no sabes qué hacer con todo lo que llevas adentro.\n\nQuizás así es como funciona el amor: mirar a alguien más sin transformarlo en un milagro, entender sus contradicciones y quedarte.\n\nDe millones de caras, de millones de vidas que nunca conoceré, una existencia me parece más coherente que cualquier otra: la tuya.\n\nNo porque seas perfecta. Pero porque eres tú.','porque eres tú.'],
 
-        ['elección','Elección\n\nPor el resto de mi vida puedo seguir intentando encontrar una respuesta al por qué estoy tan profundamente enamorado de ti pero nunca encontrare una buena suficiente.\n\nPorque no fue solo el hecho de que aparecieras en mi vida.\n\nFue TÚ quien apareció.\n\nEntre todas esas personas, todas esas formas de vida y todos esos destinos que podrían ser míos mi corazón encontró el tuyo y decidió quedarse con él.\n\nTe elijo.\n\nNo en el sentido de algunas palabras románticas.\n\nTe elijo de verdad.\n\nTe elijo porque cuando pienso en la persona que me gustaría tener a mi lado me imagino a ti.\n\nPorque cuando pienso en los días que aún no hemos vivido quiero pasarlos contigo.\n\nQuiero seguir aprendiendo cosas nuevas sobre ti aunque estoy seguro de que ya sé todo de ti.\n\nQuiero volver a enamorarme de ti una y otra vez.\n\nY si tuviera que empezar desde el principio, borrar todo lo que ha pasado y encontrarte de nuevo entre millones de otras personas...\n\nTe encontraría.\n\nY cuando te encuentre te elegiría.\n\nUna y otra vez y otra vez.\n\nHasta que no quede ninguna duda de que de todas las personas que podría amar yo elegí a ti.','para la persona que elegiría una y mil veces.'],
+        ['elección','Podría amarte por rutina, por miedo a la soledad, por esa necesidad desesperada que tienen los hombres de aferrarse a algo. Pero no.\n\nTe elijo consciente, consciente del riesgo, consciente de la posibilidad de perder todo lo que amamos escondido en él.\n\nTe elijo porque podría irme y aun así elegí quedarme. Porque nadie me mantiene por la fuerza, porque nadie me promete que estarás aquí mañana.\n\nQuizás esto sea el regalo más sincero que puedo hacerte: no un amor necesario, sino una elección.\n\nHoy. Mañana. Mientras pueda verte y elegir decirte:\n\nSí, quiero que seas tú.','esto es lo que más amo de nosotros.'],
 
-        ['Hermosa','Hermosa\n\nHoy otra vez pensé en lo hermosa que eres.\n\nY no sé por qué sigo intentando encontrar palabras para describirlo pero cada vez siento que no encuentro nada lo suficientemente grande.\n\nEres hermosa.\n\nAsí, simplemente.\n\nMe gusta mirarte.\n\nMe gusta tu cara, tus ojos, tu sonrisa, cada cosa diminuta que me hace detenerme cada vez que te veo.\n\nY no es solo el hecho de que seas linda.\n\nEs el hecho de que TÚ eres.\n\nY eso te hace aún más hermosa a mis ojos.\n\nDe vez en cuando me sorprendo mirándote y me siento la persona más afortunada del mundo por haberte encontrado.\n\nSolo me quedo parado mirándote tratando de memorizar cada detalle tuyo.\n\nPorque quiero recordarte.\n\nQuiero recordar cómo te ves cuando sonríes.\n\nQuiero recordar tus ojos.\n\nQuiero recordar esa sensación que tengo cuando te veo y pienso que eres la chica más hermosa del mundo.\n\nY supongo que nunca encontrare una palabra que pueda decirlo todo.\n\nAsí que voy a seguir intentando de la única manera que sé:\n\nEres hermosa.\n\nEres preciosa.\n\nY te amo.\n\nTe amo tanto que cada vez que te miro siento que no sé qué hacer con todo eso.','para cuando me quede mirándote sin saber qué decir.']
-      ],
+        ['Hermosa','Se dice que la belleza es efímera, que cada rostro finalmente se someterá al tiempo, que ni siquiera la fuente más hermosa aprenderá a quedarse para siempre.\n\nQuizás sea cierto.\n\nPero cuando te miro no pienso en el tiempo. Pienso en la forma en que tus ojos me hacen sentir más cerca del mundo, en la luz que deja tu sonrisa atrás en lugares de fatiga.\n\nTe digo que eres hermosa no para convencerte de algo. Lo hago porque necesito decírtelo porque lo veo.\n\nY si algún día llega cuando el espejo te engaña, cuando alguna mañana ya no reconozcas a la mujer que tienes delante, saber que hay ojos que te han mirado sin exigir la perfección, que han visto la belleza incluso en lugares donde tú te negaste a verla.\n\nEstos ojos son los míos.','para los días en que olvides lo hermosa que eres.']
+,
       'Oscuros':[
-        ['Juramento',`Algo me tiene agarrado.
-
-Desgarra mi alma con cada latido de mi corazón.
-
-Atáme si tienes que hacerlo.
-
-Secuestrame mientras aún pueda ser secuestrado.
-
-No quiero que siempre seas amable conmigo.
-
-Quiero sentir que hay algo dentro de ti que puede desarmarme por completo.
-
-Que podrías caminar por mi cabeza dejándola en ruinas.
-
-Déjame romper tu corazón.
-
-Marca tu corazón con mis dientes para que no olvides mi presencia.
-
-Contamina con cada palabra que digas.
-
-Que cada cosa que digas me persiga para siempre.
-
-Pierde el control de ti mismo.
-
-Hazme olvidar el punto en el que mi orgullo termina y tú empiezas.
-
-Y cuando ya no pueda soportarlo...
-
-Por favor vuelve a mí.
-
-Siempre vuelve.`,`para leer despacio.`],
-        ['Dulce Veneno',`Algo extraño sucede con la forma en la que te has vuelto tan necesario para mí.
-
-No,no de una manera desesperada.
-
-Hay algo más en juego aquí.
-
-Has entrado en mis días sin que yo te lo pidiera.
-
-Ahora tengo canciones que no puedo escuchar sin imaginarme a ti.
-
-Hay lugares con tu nombre aunque no hayan sido escritos.
-
-Hay momentos en los que te busco con mis pensamientos antes de darme cuenta.
-
-Y lo peor es que me gusta.
-
-Me gusta tenerte en mis pensamientos tanto.
-
-Me gusta saber que poco a poco te has vuelto inseparable de todo.
-
-Supongo que eso es lo que hace tan peligroso amarte.
-
-Encontrar cada día de nuevo la forma en la que te vuelves una necesidad.
-
-Y cada vez que creo que puede haber suficiente...
-
-Quiero un poco más de ti.`,`para tus noches más oscuras.`],
-        ['Mátame de amor',`Mátame con tu amor.
-
-Mátame pero con besos.
-
-Mátame con abrazos.
-
-Mátame con esa mirada que me hace olvidar por un momento todo lo demás.
-
-Déjame que me derrita por ti.
-
-Quiero perder la pelea contra ti.
-
-Quiero quedarme sin palabras, sin ninguna defensa cuando estés demasiado cerca de mí.
-
-Acércate lo suficiente para que no sepa dónde poner las manos.
-
-Mírame como solo tú sabes hacerlo.
-
-Hazme perder los nervios.
-
-Déjame sentir por un momento que no tengo que estar al mando de todo.
-
-Quiero tus suaves besos.
-
-Tus manos sobre mí.
-
-La forma en que sabes acercarte a mí y saber exactamente qué estás haciendo.
-
-Y si vas a volverme loco...
-
-Entonces hazlo lentamente.
-
-Hazme querer más cada vez.
-
-Porque algo en ti hace que incluso perder el control se sienta como estar exactamente donde tengo que estar.
-
-Hazme lo que quieras con esa forma en que me miras.
-
-Porque hay algo en la forma en que me miras que me hace perder todo mi autocontrol.
-
-Y me encanta.
-
-Me encanta caer cuando sé que eres tú quien está ahí.`,`para mi parte dramática.`],
-        ['Fuego',`No quiero apagar el fuego que eres tú.
-
-Quiero acercarme a ti.
-
-Quiero sentir el calor aunque sepa que podría consumirme por completo.
-
-Hay algo en ti que me atrae incluso cuando debería mantenerme alejado.
-
-Un tipo de atracción que no entiendo.
-
-Y cuanto más me acerco a ti menos quiero escapar.
-
-Quiero saber dónde ardes.
-
-Quiero averiguar hasta qué punto puedo acercarme a ti antes de perder completamente la cabeza.
-
-Porque hay fuegos que uno los mira desde la distancia.
-
-Pero tú no eres uno de ellos.
-
-No quiero mirarte desde lejos.
-
-Quiero acercarme a ti.
-
-Quiero arder.
-
-Y aunque acabe reducido a cenizas...
-
-Quiero que al menos sea tu fuego el que me consuma.`,`para la chica que arde.`]
+        ['juramento','Arráncame la calma si alguna vez hace falta para darte refugio. Quédate con mis horas, con mis noches, con todo lo que pueda darte sin perderme. No porque tengas que hacerlo, sino porque hay amores que uno no quiere vivir a medias.','para leer despacio.'],
+        ['veneno dulce','Hay algo peligrosamente bonito en quererte: desde que llegaste, mi soledad dejó de parecer suficiente. Si esto es una enfermedad, no quiero curarme; prefiero aprender a vivir con tu nombre debajo de la piel.','para tus noches más oscuras.'],
+        ['mátame de amor','Mátame, pero de besos. Mátame de abrazos. Mátame con esa forma tuya de mirarme y hacerme olvidar por un segundo todo lo demás. Déjame rendido ante ti, no por obligación, sino porque me encanta caer cuando sé que eres tú quien me espera abajo.','para mi parte dramática.'],
+        ['fuego','No quiero apagar el incendio que eres. Quiero acercar las manos, sentir el calor y aprenderte sin convertirte en ceniza. Hay fuegos que destruyen; el tuyo, de alguna manera, también me ilumina.','para la chica que arde.']
       ],
       'Madrugada':[
-        ['03:17','Son las 3:17 y la noche es tan grande que te tengo tan lejos de mis manos.<br><br>Todo está dormido excepto mi cabeza,<br>la cual sigue volviendo hacia ti<br>como si ella misma conociera el camino de memoria.<br><br>Pienso en tus ojos y el silencio ya no me pesa.<br><br>Pienso en tu voz y la madrugada ya no parece tan solitaria.<br><br>Extraño.<br><br>Mientras todos duermen puedo encontrarte en todas partes de mi cabeza.<br><br>Y por eso no quiero cerrar mis ojos todavía.<br><br>Quiero quedarme en esta hora loca,<br>pensando en ti una vez más.','para las 3:17.'],
-
-        ['Distancia','La madrugada hace que la distancia parezca más pequeña.<br><br>Solo unos pocos kilómetros parecen demasiado lejos<br>cuando todo lo que quiero es estar cerca de ti.<br><br>Necesito tu voz<br>para llenar el silencio.<br><br>Necesito tus manos<br>para estar cerca de las mías.<br><br>Quiero verte<br>sin tener que imaginarte.<br><br>Pero esta noche<br>solo tengo recuerdos.<br><br>Y los recuerdos duelen tan dulcemente<br>cuando son tuyos.<br><br>Así que me quedo despierto y dejo que la noche pase<br>mientras mi cabeza vuelve una y otra vez<br>al mismo lugar:<br><br>Tú.','para cuando la distancia pese.'],
-
-        ['Última Página','Escribo tu nombre<br>y la página se llena.<br><br>Escribo te amo<br>y pienso que no es suficiente.<br><br>Escribo acerca de tus ojos,<br>de tu sonrisa,<br>de la forma en que me miras<br>y aún pienso que no he escrito nada todavía.<br><br>Quizás nunca haya<br>una última página para ti.<br><br>Porque siempre hay algo más que decir.<br><br>Un recuerdo.<br><br>Una palabra.<br><br>Otra forma de amarte.<br><br>Y ahí estoy,<br>en medio de la noche,<br>escribiendo acerca de ti<br>como si la noche fuera infinita.<br><br>Quizás lo sea.<br><br>Al menos lo es<br>mientras siga pensando en ti.','para todo lo que todavía me falta decirte.'],
-
-        ['Después','Después de que todo esté en silencio<br>tú sales.<br><br>Cuando las luces se apagan<br>y la noche está sola<br>mi cabeza va en busca de ti.<br><br>Entonces recuerdo<br>tu risa.<br><br>Tu mirada.<br><br>La forma en que existes<br>justo aquí en mi corazón.<br><br>Es tan extraño amar a alguien de esta manera.<br><br>Que en el silencio<br>siempre hay una voz que te trae de vuelta a mí.<br><br>Que incluso con los ojos cerrados<br>puedo encontrarte.<br><br>Que incluso a esta hora,<br>cuando debería estar durmiendo<br>mi corazón sigue despierto<br>solo para pensar en ti.<br><br>Y quizás mañana<br>no recuerde exactamente<br>lo que escribí esta noche.<br><br>Pero recordaré esto:<br><br>En las primeras horas de las 4 de la mañana<br>todavía eras tú.','para cuando vuelva a ser de madrugada.']
+        ['03:17','Si estás leyendo esto de madrugada, probablemente estés pensando demasiado. Ven. No solucionemos nada. Piensa en mí un rato, respira lento y recuerda que mañana todavía existirá. Esta noche basta con saber que te amo.','sin resolver nada.'],
+        ['distancia','A veces la distancia no parece espacio; parece una pared. Y aun así, cada día encuentro una manera de atravesarla: un mensaje, una canción, una risa tuya, cualquier cosa que me recuerde que sigues siendo real.','para cuando me eches de menos.'],
+        ['última página','Y si alguna noche crees que ya te he dicho todo, abre esto otra vez. Me faltan páginas, metáforas, canciones y años enteros para explicarte lo que haces conmigo.','esto no termina aquí.'],
+        ['después','Después del enfado. Después del silencio. Después de la distancia. Después de cualquier noche difícil. Sigues siendo tú. Y yo sigo teniendo ganas de acercarme, de escucharte, de besarte y de volver a elegirte.','para volver a nosotros.']
       ]
     };
     let poemSet='Amor';
