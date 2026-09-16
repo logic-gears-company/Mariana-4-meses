@@ -1,9 +1,19 @@
-MÚSICA
+PLAYLIST DE THE BEATLES — 10 CANCIONES
 
-No se incluye una copia de una canción de The Beatles por derechos de autor.
+La interfaz ya incluye las 10 canciones y un reproductor estilo Spotify.
+Para que cada pista sea reproducible, coloca en esta carpeta los archivos de audio
+que tengas derecho a usar con estos nombres exactos:
 
-Si tienes una copia obtenida legalmente de la canción que quieras usar, ponla aquí con este nombre exacto:
+1. here-there-and-everywhere.mp3
+2. something.mp3
+3. in-my-life.mp3
+4. yesterday.mp3
+5. let-it-be.mp3
+6. here-comes-the-sun.mp3
+7. and-i-love-her.mp3
+8. blackbird.mp3
+9. norwegian-wood.mp3
+10. all-you-need-is-love.mp3
 
-beatles.mp3
-
-La página ya está preparada para reproducir public/music/beatles.mp3.
+El archivo beatles.mp3 existente se conserva para la sección musical original.
+No se incluyen grabaciones comerciales de The Beatles en este paquete.
